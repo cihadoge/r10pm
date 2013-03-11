@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	</head>
+	<script src="jquery.js"></script>
+
+	<body id="popup">
+		<span id="header">r10 Blog</span>
+		<span id="info"></span>
+		<span id="message"></span>
+	</body>
+	<script>
+		var loc=window.location.href;
+		var tut = loc.indexOf('#') + 1;
+		var title=loc.substring(tut,loc.indexOf('#',tut));
+		var link = loc.substring(loc.indexOf('#',tut)+1);
+		$('#info').html("<a href=\""+link+"\" target=\"_blank\">" + title + "</a>");
+		if(localStorage['sound'] == "true")
+		{
+			ses=new Audio("sounds/bell.mp3");
+			ses.play();
+		}
+
+	</script>
+</html>
+		

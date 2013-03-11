@@ -1,0 +1,110 @@
+<head>
+	 <script src="jquery.js"></script>
+
+	<script>
+		function fill()
+		{
+			$('#'+(localStorage['timeout']/1000)).attr("selected","selected");
+			$('#sound'+(localStorage['sound'])).attr("selected","selected");
+			$('#reply'+(localStorage['newreply'])).attr("selected","selected");
+		}
+		function save()
+		{
+			al = new Array();
+			var al = $('#control').val();
+			localStorage['timeout'] = al*1000;
+			var al = $('#sound').val();
+			localStorage['sound'] = al;
+			var al = $('#newreply').val();
+			localStorage['newreply'] = al;
+			alert("Ayarlarýnýz Kaydedildi");
+		}
+		function sendMessage()
+		{
+			
+			alert("Bu kýsým aktif deðildir. Önerilerinizi r10 konumuzdan iletebilirsiniz");
+		}
+	</script>
+	<style>
+		.main{
+			width: 600px;
+		}
+		
+		body{
+			font-family : Arial;
+			background-color: #eee;
+		}
+		td {
+			
+			vertical-align: top;
+			font-color: black;
+			font-size: 15px;
+			font-weight: bold;
+		}
+	</style>
+	<title>r10 Bildirim Ayarlar</title>
+</head>
+<body onload="fill();">
+	<center>
+		<div class="main">
+			<fieldset style="text-align:left;font-size:15px;">
+				<legend><strong>R10 Özel Mesaj Bildirimi</strong></legend>
+				<img src="rokito.png" style="float:left; margin-right: 10px;">
+				<b>"r10 Bildirim"</b> eklentisi ile yeni özel mesaj geldiðinde ya da abone olduðunuz konulara yeni mesaj geldiðinde popup pencere ile bilgilendirileceksiniz.
+				<br><br><small><i><a href="http://www.cihadoge.com">Cihad ÖGE</a> &copy; 2012 </i></small>
+			</fieldset>
+			<fieldset>
+				<legend>Ayarlar</legend>
+				<table>
+					<tr>
+						<td style="padding-top: 5px;">Kontrol Sýklýðý</td>
+						<td style="width: 60%;">
+							<select style="width:50%; background-color: #eef;" id="control">
+								<option id="5" value="5">5 sn</option>
+								<option id="10" value="10">10 sn</option>
+								<option id="30" value="30">30 sn</option>
+								<option id="60" value="60">1 dk</option>
+								<option id="300" value="300">5 dk</option>
+								<option id="600" value="600">10 dk</option>
+								<option id="1800" value="1800">30 dk</option>
+								<option id="3600" value="3600">1 saat</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td style="padding-top: 5px;">Aboneliklere Yeni Cevap</td>
+						<td style="width: 60%;">
+							<select style="width:50%; background-color: #eef;" id="newreply">
+								<option id="reply0" value="0">Kapalý</option>
+								<option id="replymy" value="my">Sadece Benim Konularým</option>
+								<option id="replyall" value="all">Abone Olunan Tüm Konular</option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td style="padding-top: 5px;">Sesli Uyarý</td>
+						<td style="width: 60%;">
+							<select style="width:50%; background-color: #eef;" id="sound">
+								<option id="soundtrue" value="true">Açýk</option>
+								<option id="soundfalse" value="false">Kapalý</option>
+							</select>
+							<input type="submit" value="Kaydet" onclick="save();return false;"/>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			
+			<fieldset>
+				<legend>Ýletiþim</legend>
+				<table>
+					<tr><td style="padding-top: 5px;">Ad Soyad</td> <td><input type="text" id="name" /></td> </tr>
+					<tr><td style="padding-top: 5px;">Email</td> <td><input type="text" id="mail" /></td> </tr>
+					<tr><td style="padding-top: 5px;">Mesajýnýz</td> <td><textarea id="name" rows="15"  cols="40" > </textarea> </td> </tr>
+					<tr><td style="padding-top: 5px;">&nbsp;</td> <td><input type="submit" value="Gönder" onclick="sendMessage(); return false;"> </td> </tr>
+				</table>
+			</fieldset>
+
+		</div>
+	</center>
+</body>

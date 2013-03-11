@@ -1,0 +1,31 @@
+<script src="jquery.js"></script>
+<script src="ccc.js"></script>
+
+<script>
+	if(localStorage['timeout'] == undefined){
+		localStorage['timeout'] = 30000;
+	}
+	if(localStorage['newreply'] == undefined){
+		localStorage['newreply'] = "my";
+	}
+	checkPM();
+	checkBlog();
+	setInterval("checkPM()", localStorage['timeout']);
+	setInterval("checkBlog()", 1000*60*10);
+</script>
+
+<script>
+chrome.browserAction.onClicked.addListener(function(tab){
+	var chromeExtURL="http://www.r10.net/usercp.php"
+	chrome.tabs.getAllInWindow(null,function(tabs){
+		for (var i=0;i<tabs.length;i++){
+			if (tabs[i].url == chromeExtURL){
+				chrome.tabs.update(tabs[i].id, {selected:true})
+				return;
+			}
+		}
+		chrome.tabs.create({url:chromeExtURL,selected:true})
+	})
+})
+</script>
+
